@@ -37,13 +37,13 @@ export class LoginComponent implements OnInit {
       console.log(responseData);
       
 
-      if(responseData.user.name)
-    {
-        this.handleAuthentication(responseData.user.email,responseData.user._id,responseData.user.name);
+    //   if(responseData.user.name)
+    // {
+    //     this.handleAuthentication(responseData.user.email,responseData.user._id,responseData.user.name);
         
         this.router.navigate(['/main']);
 
-      }
+      //}
     })
     form.reset();
   }

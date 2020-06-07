@@ -1,5 +1,6 @@
 //import {Product} from './product.model';
 import {Cart} from './cart.model';
+import { Component, EventEmitter} from '@angular/core';
 // import { Component, EventEmitter, Injectable} from '@angular/core';
 // import { HttpClientModule } from '@angular/common/http';
 // import { HttpClient } from '@angular/common/http';
@@ -9,32 +10,32 @@ import {Cart} from './cart.model';
 //@Injectable()
 export class CartServices
 {
-
+    CartChanged = new EventEmitter<Cart[]>();
     cart : Cart[] =
   [
-      new Cart('T-shit','this is new t-shirt',100,1500),  //object create
-      new Cart('T-shit','this is new t-shirt',100,200),  //object create
-      new Cart('T-shit','this is new t-shirt',100,200),  //object create
+    //  new Cart("543543",'T-shit',18,"abc.jpg",10,1800),  //object create
+      // new Cart('T-shit','this is new t-shirt',100,200),  //object create
+      // new Cart('T-shit','this is new t-shirt',100,200),  //object create
 
       
   ];
 
-    // constructor(private http:HttpClient)
-    // {
-
-    // }
-  
 
     getcart()
     {
         return this.cart.slice();
     }
 
-    addCart(cart: Cart) {
-        this.cart.push(cart);
-        this.cart.next(this.cart.slice());
+    // addCart(cart: Cart)
+    //  {
+    //     this.cart.push(cart);
+    //     this.cart.next(this.cart.slice());
+    //   }
+    addCart(cartitems:Cart)
+      {
+          this.cart.push(cartitems);
+          this.CartChanged.emit(this.cart.slice());
       }
-
 
     // fetchData()
     // {
@@ -61,6 +62,13 @@ export class CartServices
     // ;
     // }
 
-    
+      deleteCart(index:number)
+      {
+       
+         
+        this.cart.splice(index, 1);     
+        }
+      
+
 
 }

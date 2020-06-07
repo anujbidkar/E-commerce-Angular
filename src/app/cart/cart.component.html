@@ -14,6 +14,7 @@
                     <th>Product Qty</th>
                     <th>Product Price</th>
                     <th>Total</th>
+                    <th>Remove</th>
                 </tr>
 
             </thead>
@@ -23,12 +24,26 @@
                     <td>{{m+1}}</td>
                     <td>{{i.product_name}}</td>
 
-                    <td>{{i.product_name}}</td>
+                    <td>
+                        <img width="50px" height="50px" src="http://localhost:3006/{{i.product_image}}" alt="">
+                    </td>
                     <td>{{i.product_count}}</td>
                     <td>{{i.product_price}}</td>
                     
                     <td>{{i.product_count * i.product_price }}</td>
 
+                    <td>
+                            
+                        <button (click)="deleteCart(m)" class="btn-danger text-light">
+                            X
+                        </button>
+                    </td>
+
+                </tr>
+                <tr *ngIf="cart.length === 0">
+                    <th class="text-center" colspan="7">
+                                No Items In Cart.
+                        </th>
                 </tr>
             </tbody>
 
@@ -38,31 +53,10 @@
 
                 <tr>
                     <th colspan="5" class="text-right">
-                        Total
-                    </th>
-                    <th>2500ts</th>
-                   
-                </tr>
-                
-                <tr>
-                    <th colspan="5" class="text-right">
-                        GST
-                    </th>
-                    <th>5%</th>
-                   
-                </tr>
-                <tr>
-                    <th colspan="5" class="text-right">
-                        Discount
-                    </th>
-                    <th>0rs</th>
-                   
-                </tr> <tr>
-                    <th colspan="5" class="text-right">
                         Final Amount
                     </th>
                     <th>
-                        2700rs
+                        {{final_total}} Rs
                     </th>
                    
                 </tr>
@@ -74,8 +68,10 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-12">
-        <button class="btn btn-success">
+    <div class="col-lg-12 ">
+  
+
+        <button (click)="placeOrder2()"  class="btn btn-success float-right mr-8">
             Place Order
         </button>
     </div>

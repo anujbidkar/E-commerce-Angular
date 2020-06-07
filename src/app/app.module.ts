@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { CartServices } from './cart.service';
+import { NewOrderServices } from './neworder.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { CartServices } from './cart.service';
     FormsModule
     
   ],
-  providers: [ProductServices,CartServices],
+  providers: [ProductServices,CartServices,NewOrderServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
